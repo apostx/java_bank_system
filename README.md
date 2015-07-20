@@ -3,25 +3,25 @@
 Simple JSP/Servlet based demo bank application
 (Home Test Task For A Job)
 
-Required features:
+## Required features:
 
--login:
+-**login:**
   * authentication with name and password,
   * error handling
 
--logout:
+-**logout:**
   * session closing,
   * confirmation for logout
 
--menu:
+-**menu:**
   * always available in logged state,
   * contains the available functions
 
--account balance:
+-**account balance:**
   * available from menu and after login automatically,
   * contains the logged user's own accounts (account number, currency, current balance)
 
--transfer:
+-**transfer:**
   * available from menu
   * transfer between JUST same currency accounts (source account number, target account number, amount),
   * the logged user's own accounts/source account numbers have to be in a selectable list,
@@ -32,6 +32,6 @@ Required features:
   * the transfer process must be atomic,
   * error handling
 
--balance history:
+-**balance history:**
   * available from menu,
   * transfer list of selected account number (source/target account number, currency, amount,transaction type[credit/debit],available balance)
