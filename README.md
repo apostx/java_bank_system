@@ -4,11 +4,11 @@ Simple JSP/Servlet based bank demo application
 
 Required features:
 
--login: 
+-login:
 	● authentication with name and password,
 	● error handling
 
--logout: 
+-logout:
 	● session closing,
 	● confirmation for logout
 
@@ -16,7 +16,7 @@ Required features:
 	● always available in logged state,
 	● contains the available functions
 
--account balance: 
+-account balance:
 	● available from menu and after login automatically,
 	● contains the logged user's own accounts (account number, currency, current balance)
 
