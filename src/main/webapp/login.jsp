@@ -1,41 +1,5 @@
-<%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
-<%@page import="org.springframework.web.context.WebApplicationContext"%>
-<%@page import="wup.db.DatabaseManager"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% 
-    WebApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
-    DatabaseManager databaseManager = (DatabaseManager) ctx.getBean("databaseManager");
-    
-    boolean tryLogin = false;
-    boolean isLogin = session.getAttribute("id") != null;
-    boolean logoutRequest = "true".equals(request.getParameter("logout"));
-
-    if (isLogin && logoutRequest) {
-        
-        // logout procedure
-        
-        session.removeAttribute("id");
-        session.invalidate();
-    } else if(!isLogin) {
-        
-        // login procedure
-        
-        String emailAddress = request.getParameter("email_address");
-        String password = request.getParameter("password");
-        tryLogin = !(emailAddress == null &&  password == null);
-        
-        if(tryLogin) {
-            int id = databaseManager.getUserID(emailAddress,password);
-            
-            if (0<id) {
-                session.setAttribute("id", id);
-                response.sendRedirect("account_balance.jsp");
-            }
-        }
-    } else {
-        response.sendRedirect("account_balance.jsp");
-    }
-%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -43,20 +7,19 @@
         <title>Login</title>
     </head>
     <body>
-        <form action="login.jsp" autocomplete="on" method="post">
+        <form action="login" autocomplete="on" method="post">
             Email address:
             <br>
-            <input type="text" name="email_address">
+            <input type="text" name="name" value="${login_name}">
             <br>
-            Paddword
+            Password
             <br>
             <input type="password" name="password">
             <br>
             <input type="submit" value="Submit">
         </form>
-        <%
-            if (tryLogin)
-                out.print("Invalid email address or password.");
-        %>
+        <c:if test="${login_failed}">
+            <span>Invalid name or password!</span>
+        </c:if>
     </body>
 </html>

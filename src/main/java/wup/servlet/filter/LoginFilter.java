@@ -19,11 +19,11 @@ import javax.servlet.http.HttpSession;
 
 /**
  * If the request hasn't logined session, than the request will redirect to login site
- * If it has it, than there is default behavior 
+ * If it has that, than there is default behavior 
  */
 public class LoginFilter implements Filter {
 
-    private static final String LOGIN_URL = "/login.jsp";
+    private static final String LOGIN_URL = "/login";
     
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {

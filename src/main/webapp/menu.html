@@ -2,9 +2,9 @@
     <!-- MENU -->
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <a href="account_balance.jsp">Account Balances</a>
-    <a href="transfer.jsp">Transfer</a>
-    <a href="history.jsp">History</a>
+    <a href="account_balance">Account Balances</a>
+    <a href="transfer">Transfer</a>
+    <a href="history">History</a>
     <a id="logout" href="#">Logout</a>
     <script>
         $(function(){
@@ -13,7 +13,7 @@
             
             $("#logout").on("click",function() {
                 if(confirm("Are you sure?!"))
-                    window.location.href = "login.jsp?logout=true";
+                    window.location.href = "login?logout=true";
             });
         });
     </script>

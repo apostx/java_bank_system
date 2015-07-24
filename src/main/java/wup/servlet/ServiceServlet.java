@@ -21,9 +21,9 @@ public class ServiceServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException,IOException {
         HttpSession session = req.getSession();
-        
+
         Object id = session.getAttribute("id");
-        
+
         if (id == null)
             return;
 
@@ -31,9 +31,9 @@ public class ServiceServlet extends HttpServlet {
         DatabaseManager databaseManager = (DatabaseManager) ctx.getBean("databaseManager");
 
         String accountNumber = req.getParameter("account_number");
-        
+
         List<Transaction> transactions = databaseManager.getTransactions((int) id, accountNumber);
-        
+
         ObjectMapper mapper = new ObjectMapper();
 
         res.setContentType("application/json;charset=UTF-8");

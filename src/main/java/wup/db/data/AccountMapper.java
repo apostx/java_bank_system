@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 import wup.db.data.AccountMapper.Account;
+import wup.utils.FormatString;
 
 
 /**
@@ -15,7 +16,6 @@ public class AccountMapper implements RowMapper<Account> {
     public Account mapRow(ResultSet rs, int i) throws SQLException {
         return new Account(rs.getString("account_number"),rs.getInt("currency_id"),rs.getString("short_name"),rs.getInt("balance"));
     }
-
     
     /**
      * Data object
@@ -36,6 +36,10 @@ public class AccountMapper implements RowMapper<Account> {
         
         public String getAccountNumber() {
             return _accountNumber;
+        }
+        
+        public String getFormattedAccountNumber() {
+            return FormatString.accountNumber(_accountNumber);
         }
 
         public int getCurrencyID() {

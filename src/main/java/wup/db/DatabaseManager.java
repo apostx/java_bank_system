@@ -56,14 +56,14 @@ public class DatabaseManager {
         }
     }
     
-    public List<Account> getOwnAccounts(int id) {
+    public List<Account> getOwnAccountList(int id) {
         return _jdbcTemplate.query(
                 "SELECT account_number,currency_id,short_name,balance FROM account_info WHERE user_id = ?",
                 new AccountMapper(),
                 id);
     }
     
-    public List<String> getOwnAccountList(int id) {
+    public List<String> getOwnAccountNumberList(int id) {
         return _jdbcTemplate.query(
                 "SELECT account_number FROM account_info WHERE user_id = ?",
                 new AccountNumberMapper(),
@@ -122,43 +122,43 @@ public class DatabaseManager {
                         new Object[]{sourceAccount,id},
                         new int[]{Types.VARCHAR,Types.INTEGER},
                         Integer.class);
-                    
+
                     phase = 2;
-                    
+
                     if (balance < amount)
                         throw new Exception("Too little balance!");
-                    
+
                     phase = 3;
-                    
+
                     _jdbcTemplate.update("UPDATE account SET balance = balance - ? WHERE account_number like ?",
                         new Object[]{amount,sourceAccount},
                         new int[]{Types.INTEGER,Types.VARCHAR});
-                    
+
                     phase = 4;
-                    
+
                     int newSourceBalance = getBalance(sourceAccount);
-                    
+
                     phase = 5;
-                    
+
                     _jdbcTemplate.update("UPDATE account SET balance = balance + ? WHERE account_number like ?",
                         new Object[]{amount,targetAccount},
                         new int[]{Types.INTEGER,Types.VARCHAR});
-                    
+
                     phase = 6;
-                    
+
                     int newTargetBalance = getBalance(targetAccount);
-                    
+
                     phase = 7;
-                    
+
                     _jdbcTemplate.update("INSERT INTO transaction (source_account_number,target_account_number,amount,`timestamp`,source_balance,target_balance) VALUES (?,?,?,NOW(),?,?);",
                         new Object[]{sourceAccount,targetAccount,amount,newSourceBalance,newTargetBalance},
                         new int[]{Types.VARCHAR,Types.VARCHAR,Types.INTEGER,Types.INTEGER,Types.INTEGER});
-                    
+
                     phase = 0;
                 }catch (Exception e) {
                     ts.setRollbackOnly();
                 }
-                
+
                 return phase;
             }
         });

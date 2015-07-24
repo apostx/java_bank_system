@@ -96,7 +96,7 @@
         
             int userID = (int) session.getAttribute("id");
             
-            List<String> accounts = databaseManager.getOwnAccountList(userID);
+            List<String> accounts = databaseManager.getOwnAccountNumberList(userID);
             
             if (0 < accounts.size()) {
                 String a;
