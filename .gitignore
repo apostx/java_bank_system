@@ -9,4 +9,5 @@
 
 # Project Files #
 /nb-configuration.xml
-/target/
+/target*/
+*.log

@@ -1,12 +1,11 @@
 package wup.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,13 +24,13 @@ public class HistoryServlet extends HttpServlet {
         
         List<String> accountNumberList = databaseManager.getOwnAccountNumberList(id);
         
-        Map<String,String> accountNumbers = new HashMap<>();
+        Map<String,String> accountNumbers = new TreeMap<>();
         for (String accountNumber : accountNumberList)
             accountNumbers.put(FormatString.accountNumber(accountNumber),accountNumber);
         
         req.setAttribute("account_numbers",accountNumbers);
         
-        RequestDispatcher rd = req.getRequestDispatcher("history.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/view/history.jsp");
         rd.forward(req, resp);
     }
 

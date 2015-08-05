@@ -20,7 +20,7 @@ public class AccountBalanceServlet extends HttpServlet {
         
         req.setAttribute("accounts",databaseManager.getOwnAccountList(id));
        
-        RequestDispatcher rd = req.getRequestDispatcher("account_balance.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/view/account_balance.jsp");
         rd.forward(req, resp);
     }
     

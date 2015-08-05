@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
         if(isLogined(req))
             resp.sendRedirect("account_balance");
         else {
-            RequestDispatcher rd = req.getRequestDispatcher("login.jsp");
+            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/view/login.jsp");
             rd.forward(req, resp);
         }
     }
