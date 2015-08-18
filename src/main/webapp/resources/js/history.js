@@ -4,6 +4,8 @@ $(function() {
                 
     /**
      * Init DOM elements and send the service a request
+     * 
+     * @param {jQuery.Event} e Change event.
      */
     function onChange(e) {
         $("#account_number").prop('disabled',true);            
@@ -15,6 +17,8 @@ $(function() {
                 
     /**
      * Process datas from service and generate a table from the datas
+     * 
+     * @param {Object[]} transactions List of tranactions infos.
      */
     function onComplete(transactions) {
         $("#history").empty();

@@ -1,4 +1,4 @@
-package wup.core.data;
+package wup.helper.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

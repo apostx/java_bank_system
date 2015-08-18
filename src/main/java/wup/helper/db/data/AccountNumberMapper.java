@@ -1,4 +1,4 @@
-package wup.db.data;
+package wup.helper.db.data;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

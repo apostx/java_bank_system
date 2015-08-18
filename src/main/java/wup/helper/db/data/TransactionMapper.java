@@ -1,9 +1,9 @@
-package wup.db.data;
+package wup.helper.db.data;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
-import wup.core.data.Transaction;
+import wup.helper.data.Transaction;
 
 /**
  * Create data class from result of sql query

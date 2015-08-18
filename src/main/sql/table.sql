@@ -1,16 +1,8 @@
--- DROP --
-
-DROP VIEW IF EXISTS `account_info`;
-DROP VIEW IF EXISTS `transaction_info`;
-
-DROP TABLE IF EXISTS `transaction`;
-DROP TABLE IF EXISTS `account`;
-DROP TABLE IF EXISTS `currency`;
-DROP TABLE IF EXISTS `user`;
-
+USE test_db;
 
 -- TABLE --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(8) NOT NULL,
@@ -19,6 +11,7 @@ CREATE TABLE `user` (
 ) AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `currency`;
 CREATE TABLE `currency` (
   `id` int(2) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
@@ -28,6 +21,7 @@ CREATE TABLE `currency` (
 ) AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `account`;
 CREATE TABLE `account` (
   `account_number` varchar(24) NOT NULL,
   `user_id` int(10) NOT NULL,
@@ -39,6 +33,7 @@ CREATE TABLE `account` (
 ) DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `transaction`;
 CREATE TABLE `transaction` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `source_account_number` varchar(24) NOT NULL,
@@ -55,6 +50,7 @@ CREATE TABLE `transaction` (
 
 -- VIEW --
 
+DROP VIEW IF EXISTS `account_info`;
 CREATE VIEW `account_info` AS SELECT
 account.user_id,
 account.account_number,
@@ -66,6 +62,7 @@ account
 INNER JOIN currency ON account.currency_id = currency.id ;
 
 
+DROP VIEW IF EXISTS `transaction_info`;
 CREATE VIEW `transaction_info` AS SELECT
 `transaction`.id,
 `transaction`.source_account_number,
@@ -84,18 +81,4 @@ INNER JOIN account AS target_account ON `transaction`.target_account_number = ta
 INNER JOIN currency ON source_account.currency_id = currency.id ;
 
 
--- INSERT --
 
-INSERT INTO `user` VALUES ('1', 'asdasd1', 'A8F5F167F44F4964E6C998DEE827110C');
-INSERT INTO `user` VALUES ('2', 'asdasd2', 'A8F5F167F44F4964E6C998DEE827110C');
-
-INSERT INTO `currency` VALUES ('1', 'Hungarian Forint', 'HUF', 'Ft');
-INSERT INTO `currency` VALUES ('2', 'Euro', 'EUR', '€');
-INSERT INTO `currency` VALUES ('3', 'US Dollar', 'USD', '$');
-
-INSERT INTO `account` VALUES ('012345670123456701234567', '1', '1', '0001000000');
-INSERT INTO `account` VALUES ('123456701234567012345670', '1', '1', '0001000000');
-INSERT INTO `account` VALUES ('234567012345670123456701', '1', '2', '0001000000');
-INSERT INTO `account` VALUES ('345670123456701234567012', '2', '2', '0001000000');
-INSERT INTO `account` VALUES ('456701234567012345670123', '2', '3', '0001000000');
-INSERT INTO `account` VALUES ('567012345670123456701234', '2', '3', '0001000000');

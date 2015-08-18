@@ -6,7 +6,7 @@
     </context-param>
     <filter>
         <filter-name>LoginFilter</filter-name>
-        <filter-class>wup.controller.filter.LoginFilter</filter-class>
+        <filter-class>wup.controller.LoginFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>

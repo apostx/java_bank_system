@@ -2,7 +2,7 @@ package wup.model;
 
 import java.util.Map;
 import java.util.TreeMap;
-import wup.utils.FormatString;
+import wup.helper.view.FormatString;
 
 public class TransferModel {
 

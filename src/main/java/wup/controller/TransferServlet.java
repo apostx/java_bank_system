@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
-import wup.db.DatabaseManager;
-import wup.db.DatabaseManager.TransferErrorType;
-import wup.db.DatabaseManager.TransferResult;
+import wup.helper.db.DatabaseManager;
+import wup.helper.db.DatabaseManager.TransferErrorType;
+import wup.helper.db.DatabaseManager.TransferResult;
 import wup.model.TransferModel;
-import wup.utils.FormatString;
+import wup.helper.view.FormatString;
 
 public class TransferServlet extends HttpServlet {
 

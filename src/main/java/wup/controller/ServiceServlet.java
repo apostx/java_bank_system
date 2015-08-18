@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
-import wup.core.data.Transaction;
-import wup.db.DatabaseManager;
+import wup.helper.data.Transaction;
+import wup.helper.db.DatabaseManager;
 
 /**
  * Generate json from account history from database
